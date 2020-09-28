@@ -1,69 +1,69 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
+import 'package:provider/provider.dart';
+
+import 'ble/ble_device_connector.dart';
+import 'ble/ble_scanner.dart';
+import 'ble/ble_status_monitor.dart';
+import 'ui/ble_status_screen.dart';
+import 'ui/device_list.dart';
 
 void main() {
-  runApp(const MyApp());
-}
+  WidgetsFlutterBinding.ensureInitialized();
+  final _ble = FlutterReactiveBle();
+  final _scanner = BleScanner(_ble);
+  final _monitor = BleStatusMonitor(_ble);
+  final _connector = BleDeviceConnector(_ble);
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+  runApp(
+    MultiProvider(
+      providers: [
+        Provider.value(value: _scanner),
+        Provider.value(value: _monitor),
+        Provider.value(value: _connector),
+        StreamProvider<BleScannerState>(
+          create: (_) => _scanner.state,
+          initialData: const BleScannerState(
+            discoveredDevices: [],
+            scanIsInProgress: false,
+          ),
         ),
+        StreamProvider<BleStatus>(
+          create: (_) => _monitor.state,
+          initialData: BleStatus.unknown,
+        ),
+        StreamProvider<ConnectionStateUpdate>(
+          create: (_) => _connector.state,
+          initialData: const ConnectionStateUpdate(
+            deviceId: 'Unknown device',
+            connectionState: DeviceConnectionState.disconnected,
+            failure: null,
+          ),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: const HomeScreen(),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
+    ),
+  );
+}
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => Consumer<BleStatus>(
+        builder: (_, status, __) {
+          if (status == BleStatus.ready) {
+            return const DeviceListScreen();
+          } else {
+            return BleStatusScreen(status: status);
+          }
+        },
+      );
 }
