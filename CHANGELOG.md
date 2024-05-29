@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.0](https://github.com/lsaudon/lilo/compare/lilo-v1.3.0...lilo-v1.4.0) (2024-05-29)
+
+
+### ✨ Nouvelles fonctionnalités
+
+* Update release-please-config.json ([07a0cf3](https://github.com/lsaudon/lilo/commit/07a0cf3bccc23b24a957c3d4f971d7f4f7a68a62))
+
+
+### 🐛 Corrections de bogues
+
+* Update dart.yml ([6a82dee](https://github.com/lsaudon/lilo/commit/6a82dee8413629a28d2c91a9503565db161f1f99))
+* Update dart.yml ([799bfb3](https://github.com/lsaudon/lilo/commit/799bfb31993d5db151634a770ace1884c3bb9c66))
+* Update dart.yml ([530e7b0](https://github.com/lsaudon/lilo/commit/530e7b0f680509249084d7ad4e71aa10b072f36b))
+
 ## [1.3.0](https://github.com/lsaudon/lilo/compare/lilo-v1.2.0...lilo-v1.3.0) (2024-05-29)
 
 
