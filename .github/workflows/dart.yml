@@ -15,5 +15,4 @@ jobs:
       - name: release-please-action
         uses: googleapis/release-please-action@v4
         with:
-          release-type: dart
-        
+          config-file: .github/release-please-config.json
