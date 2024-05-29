@@ -1,5 +1,9 @@
 name: Dart
 
+permissions:
+  contents: write
+  pull-requests: write
+
 on: workflow_dispatch
 
 jobs:
@@ -8,4 +12,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: echo ${GITHUB_RUN_NUMBER}
+      - name: release-please-action
+        uses: googleapis/release-please-action@v4
+        with:
+          release-type: dart
+        
