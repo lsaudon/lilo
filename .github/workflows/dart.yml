@@ -14,3 +14,6 @@ jobs:
         with:
           manifest-file: .github/.release-please-manifest.json
           config-file: .github/release-please-config.json
+      - uses: actions/checkout@v4
+        if: steps.release.outputs.releases_created == 'true'
+      - run: echo SALUT
