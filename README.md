@@ -1,4 +1,4 @@
-# LILO
+# LILO v2
 
 A new Flutter application.
 
