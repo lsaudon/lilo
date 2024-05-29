@@ -1,17 +1,16 @@
 name: Dart
 
+on: workflow_dispatch
+
 permissions:
   contents: write
   pull-requests: write
 
-on: workflow_dispatch
-
 jobs:
-  build:
+  release-please:
     runs-on: ubuntu-latest
     steps:
-      - name: release-please-action
-        uses: googleapis/release-please-action@v4
+      - uses: google-github-actions/release-please-action@v4
         with:
           manifest-file: .github/.release-please-manifest.json
           config-file: .github/release-please-config.json
