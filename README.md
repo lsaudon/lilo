@@ -1,4 +1,4 @@
-# lilo
+# LILO
 
 A new Flutter application.
 
