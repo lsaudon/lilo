@@ -14,3 +14,4 @@ jobs:
         with:
           manifest-file: .github/.release-please-manifest.json
           config-file: .github/release-please-config.json
+          skip-github-release: true
