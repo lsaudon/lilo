@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/lsaudon/lilo/compare/lilo-v1.6.0...lilo-v1.6.1) (2024-05-31)
+
+
+### 👷 Autres changements
+
+* Déplacer dans le dossier app ([70affa7](https://github.com/lsaudon/lilo/commit/70affa79bcf43c0c968636fd509313c47a9a0a3e))
+
 ## [1.6.0](https://github.com/lsaudon/lilo/compare/liLO-v1.5.0...liLO-v1.6.0) (2024-05-29)
 
 
