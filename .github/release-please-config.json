@@ -1,6 +1,8 @@
 {
     "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
-    "packages": { "app": {"release-type": "dart"} },
+    "include-component-in-tag": false,
+    "tag-separator": "/",
+    "packages": { "app": {"release-type": "dart", "component": "app"} },
     "changelog-sections": [
         {"type": "feat" , "section": "✨ Nouvelles fonctionnalités"},
         {"type": "fix"  , "section": "🐛 Corrections de bogues"    },

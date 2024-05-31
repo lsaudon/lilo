@@ -165,10 +165,10 @@ class _DeviceDetail extends StatelessWidget {
                                 Uuid.parse(liloServiceUuid),
                                 Uuid.parse(liloLightCharacteristicUuid),
                                 const TimeOfDay(hour: 7, minute: 0),
-                                const TimeOfDay(hour: 22, minute: 45),
+                                const TimeOfDay(hour: 22, minute: 44),
                               )
                           : null,
-                      child: const Text('7h00 to 22h45'),
+                      child: const Text('7h00 to 22h44'),
                     ),
                   ],
                 ),
