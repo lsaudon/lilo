@@ -7,10 +7,9 @@ import '../ble/light.dart';
 
 class DeviceDetailScreen extends StatelessWidget {
   const DeviceDetailScreen({
-    Key key,
-    @required this.device,
-  })  : assert(device != null, 'device is null'),
-        super(key: key);
+    super.key,
+    required this.device,
+  });
 
   final DiscoveredDevice device;
 
@@ -20,8 +19,7 @@ class DeviceDetailScreen extends StatelessWidget {
         builder: (_, deviceConnector, connectionStateUpdate, __) =>
             _DeviceDetail(
           device: device,
-          connectionUpdate: connectionStateUpdate != null &&
-                  connectionStateUpdate.deviceId == device.id
+          connectionUpdate: connectionStateUpdate.deviceId == device.id
               ? connectionStateUpdate
               : ConnectionStateUpdate(
                   deviceId: device.id,
@@ -39,22 +37,14 @@ class DeviceDetailScreen extends StatelessWidget {
 
 class _DeviceDetail extends StatelessWidget {
   const _DeviceDetail({
-    @required this.device,
-    @required this.connectionUpdate,
-    @required this.connect,
-    @required this.disconnect,
-    @required this.readCharacteristic,
-    @required this.setLightMode,
-    @required this.setLightTime,
-    Key key,
-  })  : assert(device != null),
-        assert(connectionUpdate != null),
-        assert(connect != null),
-        assert(disconnect != null),
-        assert(readCharacteristic != null),
-        assert(setLightMode != null),
-        assert(setLightTime != null),
-        super(key: key);
+    required this.device,
+    required this.connectionUpdate,
+    required this.connect,
+    required this.disconnect,
+    required this.readCharacteristic,
+    required this.setLightMode,
+    required this.setLightTime,
+  });
 
   final DiscoveredDevice device;
   final ConnectionStateUpdate connectionUpdate;
@@ -76,14 +66,13 @@ class _DeviceDetail extends StatelessWidget {
       connectionUpdate.connectionState == DeviceConnectionState.connected;
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
-        onWillPop: () async {
-          disconnect(device.id);
-          return true;
-        },
+  Widget build(BuildContext context) => PopScope(
+    onPopInvoked: (didPop) {
+                disconnect(device.id);
+    },
         child: Scaffold(
           appBar: AppBar(
-            title: Text(device.name ?? 'unknown'),
+            title: Text(device.name),
           ),
           body: Center(
             child: Column(
@@ -100,18 +89,18 @@ class _DeviceDetail extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed:
                           !_deviceConnected() ? () => connect(device.id) : null,
                       child: const Text('Connect'),
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: _deviceConnected()
                           ? () => disconnect(device.id)
                           : null,
                       child: const Text('Disconnect'),
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: _deviceConnected()
                           ? () => readCharacteristic(
                               device.id,
@@ -120,7 +109,7 @@ class _DeviceDetail extends StatelessWidget {
                           : null,
                       child: const Text('Read Light'),
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: _deviceConnected()
                           ? () => readCharacteristic(
                               device.id,
@@ -129,7 +118,7 @@ class _DeviceDetail extends StatelessWidget {
                           : null,
                       child: const Text('Read Time'),
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: _deviceConnected()
                           ? () => setLightMode(
                               device.id,
@@ -139,7 +128,7 @@ class _DeviceDetail extends StatelessWidget {
                           : null,
                       child: const Text('Off'),
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: _deviceConnected()
                           ? () => setLightMode(
                               device.id,
@@ -149,7 +138,7 @@ class _DeviceDetail extends StatelessWidget {
                           : null,
                       child: const Text('Photo Mode'),
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: _deviceConnected()
                           ? () => setLightMode(
                               device.id,
@@ -159,7 +148,7 @@ class _DeviceDetail extends StatelessWidget {
                           : null,
                       child: const Text('Spring'),
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: _deviceConnected()
                           ? () => setLightMode(
                               device.id,
@@ -169,7 +158,7 @@ class _DeviceDetail extends StatelessWidget {
                           : null,
                       child: const Text('Summer'),
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: _deviceConnected()
                           ? () => setLightTime(
                                 device.id,

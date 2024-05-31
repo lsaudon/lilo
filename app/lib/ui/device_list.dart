@@ -5,7 +5,7 @@ import '../ble/ble_scanner.dart';
 import 'device_detail_screen.dart';
 
 class DeviceListScreen extends StatelessWidget {
-  const DeviceListScreen({Key key}) : super(key: key);
+  const DeviceListScreen({super.key});
 
   @override
   Widget build(BuildContext context) => Consumer2<BleScanner, BleScannerState>(
@@ -19,12 +19,10 @@ class DeviceListScreen extends StatelessWidget {
 
 class _DeviceList extends StatefulWidget {
   const _DeviceList({
-    @required this.scannerState,
-    @required this.startScan,
-    @required this.stopScan,
-  })  : assert(scannerState != null),
-        assert(startScan != null),
-        assert(stopScan != null);
+    required this.scannerState,
+    required this.startScan,
+    required this.stopScan,
+  });
 
   final BleScannerState scannerState;
   final void Function() startScan;
