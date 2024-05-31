@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.7.0](https://github.com/lsaudon/lilo/compare/v1.6.1...v1.7.0) (2024-05-31)
+
+
+### ✨ Nouvelles fonctionnalités
+
+* Ici ([3d4b664](https://github.com/lsaudon/lilo/commit/3d4b6644ee8cc4a186228698a830cf774d754d99))
+
+
+### 🐛 Corrections de bogues
+
+* blue status screen ([dc1a5de](https://github.com/lsaudon/lilo/commit/dc1a5decc913d5b2531ad58288c3360c6e7f933f))
+
+
+### 👷 Autres changements
+
+* Déplacer dans le dossier app ([70affa7](https://github.com/lsaudon/lilo/commit/70affa79bcf43c0c968636fd509313c47a9a0a3e))
+* **main:** release lilo 1.6.1 ([#7](https://github.com/lsaudon/lilo/issues/7)) ([a59c560](https://github.com/lsaudon/lilo/commit/a59c56046edbee34f26ec1c2c62b8814db89cdd1))
+
 ## [1.6.1](https://github.com/lsaudon/lilo/compare/lilo-v1.6.0...lilo-v1.6.1) (2024-05-31)
 
 
