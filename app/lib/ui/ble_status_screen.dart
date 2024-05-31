@@ -25,8 +25,6 @@ class BleStatusScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        body: Center(
-          child: Text(determineText(status)),
-        ),
+        body: Center(child: Text(determineText(status))),
       );
 }
