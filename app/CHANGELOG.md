@@ -1,6 +1,6 @@
-## 🔖 [1.8.0]
+## 🔖 [1.9.0]
 
-### 🐛 Correction
+### 🐛 Bug Fixes
 
 - bidule
 - blue status screen
@@ -14,7 +14,7 @@
 - Update dart.yml
 - Update dart.yml
 
-### ✨ Nouvelle fonctionnalité
+### ✨ Features
 
 - Ici
 - Update pubspec.yaml
@@ -24,8 +24,9 @@
 - **README:** Update README.md
 - Update README.md
 
-### 🧹 Tâche
+### 🧹 Chores
 
+- v1.8.0
 - **main:** release 1.7.0
 - **main:** release lilo 1.6.1 (#7)
 - Déplacer dans le dossier app
