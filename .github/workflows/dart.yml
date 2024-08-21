@@ -19,7 +19,9 @@ jobs:
       - run : |
           cd app
           dart pub global activate pubspec_version_cli
-          pubspec_version change --version ${{ github.event.inputs.version }}
+          echo "ici"
+          echo ${{ inputs.version }}
+          echo "la"
           cat pubspec.yaml
   build_app:
     needs: bump_version
