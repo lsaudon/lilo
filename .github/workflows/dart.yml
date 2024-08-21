@@ -19,7 +19,7 @@ jobs:
       - run : |
           cd app
           dart pub global activate pubspec_version_cli
-          pubspec_version_cli change --version ${{ inputs.version }}
+          pubspec_version change --version ${{ inputs.version }}
           cat pubspec.yaml
   build_app:
     needs: bump_version
