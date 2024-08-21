@@ -67,9 +67,9 @@ class _DeviceDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => PopScope(
-    onPopInvoked: (didPop) {
-                disconnect(device.id);
-    },
+        onPopInvokedWithResult: (didPop, result) {
+          disconnect(device.id);
+        },
         child: Scaffold(
           appBar: AppBar(
             title: Text(device.name),
