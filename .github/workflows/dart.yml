@@ -7,6 +7,7 @@ on:
         description: 'Version to bump'
         required: true
 
+
 permissions:
   contents: write
 
@@ -23,18 +24,6 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add pubspec.yaml
-          git commit -m "Modification automatique du fichier"
-  build_app:
-    needs: bump_version
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: subosito/flutter-action@v2
-      - run: cat app/pubspec.yaml
-  create_release:
-    runs-on: ubuntu-latest
-    needs: build_app
-    steps:
-      - uses: actions/checkout@v4
-      - run: cat app/pubspec.yaml
+          git commit -m "Version ${{ inputs.version }}"
+          git push
 
