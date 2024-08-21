@@ -22,7 +22,7 @@ jobs:
           pubspec_version change --version ${{ inputs.version }}
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git pubspec.yaml
+          git add pubspec.yaml
           git commit -m "Modification automatique du fichier"
   build_app:
     needs: bump_version
