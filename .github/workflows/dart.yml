@@ -20,14 +20,17 @@ jobs:
           cd app
           dart pub global activate pubspec_version_cli
           pubspec_version change --version ${{ inputs.version }}
-          cat pubspec.yaml
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git pubspec.yaml
+          git commit -m "Modification automatique du fichier"
   build_app:
     needs: bump_version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
-      - run: ls -la
+      - run: cat app/pubspec.yaml
   create_release:
     runs-on: ubuntu-latest
     needs: build_app
